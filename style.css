@@ -9,7 +9,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Шапка */
 header {
     position: sticky;
     top: 0;
@@ -22,7 +21,6 @@ header {
     justify-content: center;
 }
 
-/* Навігація */
 nav {
     display: flex;
     align-items: center;
@@ -42,14 +40,12 @@ nav a:hover {
     color: #4A3028;
 }
 
-/* Основна частина */
 section {
     width: 90%;
     max-width: 1200px;
     margin: 50px auto;
 }
 
-/* Картки */
 section > div {
     background: #FFFFFF;
     padding: 30px;
@@ -60,7 +56,6 @@ section > div {
     box-shadow: 0 8px 25px rgba(169, 67, 54, 0.1);
 }
 
-/* Заголовки */
 h1 {
     color: #8b3838;
     font-size: 48px;
@@ -75,7 +70,6 @@ h3 {
     font-size: 25px;
 }
 
-/* Текст */
 p,
 li {
     color: #4A3028;
@@ -83,7 +77,6 @@ li {
     line-height: 1.7;
 }
 
-/* Головний блок із зображенням */
 .div1 {
     min-height: 500px;
 
@@ -100,7 +93,6 @@ li {
     overflow: hidden;
 }
 
-/* Текст поверх фото */
 .div1 h3,
 .div1 p {
     width: 45%;
@@ -113,10 +105,193 @@ li {
     margin-top: 0;
 }
 
-/* Виділений текст */
+.div10 {
+    
+
+    background-image: url("img/фрукти.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.div10 h3,
+.div10 p {
+    width: 45%;
+    background: rgba(255, 244, 232, 0.92);
+    padding: 15px 20px;
+    border-radius: 15px;
+}
+
+.div10 p {
+    margin-top: 0;
+}
+
+.div9 {
+    
+
+    background-image: url("img/суп.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.div9 h3,
+.div9 p {
+    width: 45%;
+    background: rgba(255, 244, 232, 0.92);
+    padding: 15px 20px;
+    border-radius: 15px;
+}
+
+.div9 p {
+    margin-top: 0;
+}
+
+.div8 {
+    
+
+    background-image: url("img/крупи.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.div8 h3,
+.div8 p {
+    width: 45%;
+    background: rgba(255, 244, 232, 0.92);
+    padding: 15px 20px;
+    border-radius: 15px;
+}
+
+.div8 p {
+    margin-top: 0;
+}
+
+.div7 {
+    
+
+    background-image: url("img/висновок.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.div7 h3,
+.div7 p {
+    
+    background: rgba(255, 244, 232, 0.92);
+    padding: 15px 20px;
+    border-radius: 15px;
+}
+
+.div7 p {
+    margin-top: 0;
+}
+
 strong {
     color: #8b3838;
 }
+
+
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #FFF4E8;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    gap: 15px;
+}
+
+/* стилізація js */
+section > div.hidden {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section > div.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+nav a.active {
+    background: #FFF4E8;
+    color: #8b3838;
+}
+
+
+.top-button {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: #8b3838;
+    color: #FFF4E8;
+    font-size: 27px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.3s;
+    z-index: 100;
+}
+
+.top-button.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.top-button:hover {
+    background: #e97c7c;
+    color: #4A3028;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    section > div.hidden {
+        transition: none;
+    }
+}
+
 
 /* Адаптація для телефону */
 @media (max-width: 700px) {
@@ -127,8 +302,29 @@ strong {
     }
 
     nav {
-        flex-wrap: wrap;
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .menu.open {
+        display: flex;
+    }
+
+    .menu a {
+        text-align: center;
+        padding: 12px;
     }
 
     nav a {
@@ -162,8 +358,40 @@ strong {
         width: 100%;
     }
 
+    .div10 h3,
+    .div10 p {
+        width: 100%;
+    }
+
+    .div9 h3,
+    .div9 p {
+        width: 100%;
+    }
+
+    .div8 h3,
+    .div8 p {
+        width: 100%;
+    }
+
+    .div7 h3,
+    .div7 p {
+        width: 100%;
+    }
+
     p,
     li {
         font-size: 16px;
     }
+
+    
 }
+
+
+
+
+
+
+
+
+
+
