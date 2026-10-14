@@ -1,9 +1,8 @@
+// Поява блоків на сторінці
+const blocks = document.querySelectorAll("section div");
 
-const cards = document.querySelectorAll("section > div");
-
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
         if (entry.isIntersecting) {
             entry.target.classList.add("show");
             observer.unobserve(entry.target);
@@ -13,23 +12,27 @@ const observer = new IntersectionObserver((entries) => {
     threshold: 0.1
 });
 
-cards.forEach((card) => {
-    card.classList.add("hidden");
-    observer.observe(card);
+blocks.forEach(function(block) {
+    block.classList.add("hidden");
+    observer.observe(block);
 });
 
 
-const currentPage = location.pathname.split("/").pop() || "index.html";
+// Виділення поточної сторінки в меню
+const currentPage = location.pathname.split("/").pop() || "main.html";
 
-document.querySelectorAll("nav a").forEach((link) => {
-    const page = link.getAttribute("href").split("/").pop();
+const menuLinks = document.querySelectorAll("nav a");
 
-    if (page === currentPage) {
+menuLinks.forEach(function(link) {
+    const linkPage = link.getAttribute("href").split("/").pop();
+
+    if (linkPage === currentPage) {
         link.classList.add("active");
     }
 });
 
 
+// Кнопка повернення нагору
 const topButton = document.createElement("button");
 
 topButton.textContent = "^";
@@ -38,11 +41,15 @@ topButton.setAttribute("aria-label", "Повернутися нагору");
 
 document.body.appendChild(topButton);
 
-window.addEventListener("scroll", () => {
-    topButton.classList.toggle("visible", window.scrollY > 300);
+window.addEventListener("scroll", function() {
+    if (window.scrollY > 300) {
+        topButton.classList.add("visible");
+    } else {
+        topButton.classList.remove("visible");
+    }
 });
 
-topButton.addEventListener("click", () => {
+topButton.addEventListener("click", function() {
     window.scrollTo({
         top: 0,
         behavior: "smooth"
@@ -50,31 +57,28 @@ topButton.addEventListener("click", () => {
 });
 
 
-
-
-
-
-const btn = document.querySelector(".menu-btn");
+// Відкриття і закриття меню на телефоні
+const menuButton = document.querySelector(".menu-btn");
 const menu = document.querySelector(".menu");
 const links = menu.querySelectorAll("a");
 
-
-btn.addEventListener("click", () => {
-    menu.classList.toggle("open");
-
+menuButton.addEventListener("click", function() {
     if (menu.classList.contains("open")) {
-        btn.textContent = "✕";
-        btn.setAttribute("aria-expanded", "true");
+        menu.classList.remove("open");
+        menuButton.textContent = "☰";
+        menuButton.setAttribute("aria-expanded", "false");
     } else {
-        btn.textContent = "☰";
-        btn.setAttribute("aria-expanded", "false");
+        menu.classList.add("open");
+        menuButton.textContent = "✕";
+        menuButton.setAttribute("aria-expanded", "true");
     }
 });
 
-links.forEach(link => {
-    link.addEventListener("click", () => {
+// Закриття меню після переходу на сторінку
+links.forEach(function(link) {
+    link.addEventListener("click", function() {
         menu.classList.remove("open");
-        btn.textContent = "☰";
-        btn.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰";
+        menuButton.setAttribute("aria-expanded", "false");
     });
 });
