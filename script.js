@@ -19,7 +19,7 @@ blocks.forEach(function(block) {
 
 
 // Виділення поточної сторінки в меню
-const currentPage = location.pathname.split("/").pop() || "main.html";
+const currentPage = location.pathname.split("/").pop() || "index.html";
 
 const menuLinks = document.querySelectorAll("nav a");
 
